@@ -1252,7 +1252,7 @@ async function loadDashboard(user) {
     document.getElementById('dash-email-display').textContent = user.email;
 
     try {
-        const doc = await db.collection('users').doc(user.uid).get();
+        const doc = await db.collection('users').doc(user.uid).get({ source: 'server' });
         if (!doc.exists) {
             document.getElementById('no-reg-state').style.display = 'block';
             document.getElementById('reg-data-state').style.display = 'none';
